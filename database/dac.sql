@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2023 at 11:21 AM
+-- Generation Time: Jan 19, 2023 at 10:35 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -30,12 +30,23 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
   `pincode` varchar(6) NOT NULL,
   `email` varchar(255) NOT NULL,
   `id` int(11) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `saltvalue` varchar(255) NOT NULL,
+  `verified` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`first_name`, `last_name`, `pincode`, `email`, `id`, `password`, `saltvalue`, `verified`) VALUES
+('ra', 'ra', '380015', 'raj@gmail.com', 3, 'b46ed0d56c6cf87c528abd0996b3086a4838ac3968430ec174211266e5bb66d1', '9f5315d9edec7a0de41fa87d9db39a27', 0),
+('Abhay', 'Ruparel', '380015', 'abhayruparel19@gnu.ac.in', 4, '418069043f2b24d2b381449f08927c84388afaa6b808ce4423a4345f6bb4e1c0', 'b0a5d491bb0397953862a66f91887166', 0),
+('Abhay', 'Ruparel', '380015', 'abhayruparel19@gnu.ac.in', 5, '8102efeac19b37f620f9bdcf15dee1e3b4dd93133fc969f284ce7b20d3981f7f', 'eb83155cf3e22a90acbb6bfead888f7c', 0),
+('Abhay', 'Ruparel', '380015', 'harshil@gmail.com', 6, 'd0c6d6dc201573e67f64c7f2c8218ef660c80fdc77ac526d6fedf15fa361c359', '287305d3038eae404f330d4b8dc7de75', 0);
 
 -- --------------------------------------------------------
 
@@ -50,7 +61,8 @@ CREATE TABLE `manager` (
   `id` int(11) NOT NULL,
   `pincode` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `verified` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -66,6 +78,7 @@ CREATE TABLE `user` (
   `pincode` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `verified` int(11) NOT NULL,
   `id` int(11) NOT NULL,
   `lat_long` varchar(255) NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -103,7 +116,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `manager`
