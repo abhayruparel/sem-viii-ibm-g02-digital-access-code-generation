@@ -87,12 +87,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sizeOfHash = 64;
         $hashedPassword = hash_pbkdf2("sha512", $userPassword, $saltvalue, $iterations, $sizeOfHash);
         $verified = 0;
-        $sql = "INSERT INTO admin (first_name, last_name, pincode, email, password, saltvalue, verified) VALUES ('$first_name', '$last_name', '$pincode', '$email', '$hashedPassword', '$saltvalue', $verified)";
-        if ($con->query($sql) === TRUE) {
+        $stmt = $con->prepare("INSERT INTO admin (first_name, last_name, pincode, email, password, saltvalue, verified) VALUES (?,?,?,?,?,?,?)");
+        $stmt->bind_param("ssssssi", $first_name, $last_name, $pincode, $email, $hashedPassword, $saltvalue, $verified);
+
+        $stmt->execute();
+
+        if ($stmt->affected_rows === 1) {
             echo "<script>alert('New user registered successfully!')</script>";
         } else {
-            echo 'Error: ' . $sql . '<br>' . $con->error;
+            echo 'Error: ' . $stmt->error;
         }
+
 
     }
 }
