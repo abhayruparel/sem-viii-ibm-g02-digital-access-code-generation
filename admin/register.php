@@ -224,7 +224,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form_container">
             <form name="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                 <div class="heading">
-                    <h2>Registion Form</h2>
+                    <h2>SIGN-UP</h2>
                 </div>
                 <div class="form_wrap fullname">
                     <div class="form_item">
