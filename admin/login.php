@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($inputPasswordHashed === $hashedPassword) {
             // Password is correct and user is verified, set session variables
             $_SESSION["loggedin"] = true;
-            $_SESSION["username"] = $username;
+            $_SESSION["username"] = $email;
             header('location: index.php');
             exit();
         } else {
