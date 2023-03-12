@@ -39,12 +39,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="utf-8">
 		<title>Login</title>
 		<link href="style.css" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+			integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+			crossorigin="anonymous" referrerpolicy="no-referrer">
 	</head>
+
 	<body>
 		<div class="register">
 			<h1>Login</h1>
@@ -58,8 +62,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				</label>
 				<input type="password" name="password" placeholder="Password" id="password" required>
 				<input type="submit" value="Login">
-				<?php echo $errorMessage?>
+				<?php if (isset($errorMessage)): ?>
+					<p><?php echo $errorMessage; ?></p> <?php endif; ?>
 			</form>
 		</div>
 	</body>
+
 </html>
