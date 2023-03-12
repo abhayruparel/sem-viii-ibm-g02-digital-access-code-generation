@@ -18,7 +18,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-        <title>DAC|ADMIN</title>
+        <title>DAC|User</title>
         <!-- Bootstrap Core CSS -->
         <link href="../assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- Menu CSS -->
@@ -95,7 +95,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <a href="display_admins.php" class="waves-effect"><b>Display Admin</b></a>
                     </li> -->
                         <li>
-                            <a href="#" class="waves-effect"><b>Add address</b></a>
+                            <a href="collectAddress.php" class="waves-effect"><b>Add address</b></a>
                         </li>
                     </ul>
                 </div>
