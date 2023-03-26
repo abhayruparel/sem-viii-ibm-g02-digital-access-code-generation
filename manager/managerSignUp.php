@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $userPassword = $_POST['password'];
     $confirmPassword = $_POST['confirm_password'];
     // first check if the user is already registered or not
-    $stmt = $con->prepare("SELECT * FROM user where email = ?");
+    $stmt = $con->prepare("SELECT * FROM manager where email = ?");
     $stmt->bind_param("s", $email);
 
     $stmt->execute();
@@ -254,7 +254,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="form_wrap">
                     <div class="form_item">
-                        <p>if you have already registered then click: <a href="user_login.php">login</a></p>
+                        <p>if you have already registered then click: <a href="manager_login.php">login</a></p>
                     </div>
                 </div>
             </form>

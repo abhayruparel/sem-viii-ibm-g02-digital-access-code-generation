@@ -4,7 +4,7 @@ session_start();
 
 // Check if the user is logged in, if not then redirect him to login page
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("location: user_login.php");
+    header("location: manager_login.php");
     exit;
 }
 ?>
@@ -47,7 +47,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     <div class="top-left-part">
                         <a class="logo" href="index.php"><b><img src="../assets/images/maple-icon.png"
                                     alt="Home"></b><span class="hidden-xs">
-                                <font>DAC | User</font>
+                                <font>DAC | Manager</font>
                             </span></a>
                     </div>
                     <ul class="nav navbar-top-links navbar-left">
@@ -89,13 +89,13 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <!-- <b>Main Menu</b> -->
                         </li>
                         <li class="active">
-                            <a href="userDashboard.php" class="waves-effect"><b>Dashbord</b></a>
+                            <a href="managerDashboard.php" class="waves-effect"><b>Dashbord</b></a>
                         </li>
                         <!-- <li class="active">
                         <a href="display_admins.php" class="waves-effect"><b>Display Admin</b></a>
                     </li> -->
                         <li>
-                            <a href="collectAddress.php" class="waves-effect"><b>Add address</b></a>
+                            <a href="generate_otp.php" class="waves-effect"><b>OTP GENERATION</b></a>
                         </li>
                     </ul>
                 </div>
