@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			// Password is correct and user is verified, set session variables
 			$_SESSION["loggedin"] = true;
 			$_SESSION["username"] = $email;
-			$_SESSION["user_id"] = $id;
+			$_SESSION["manager_id"] = $id;
 			header('location: managerDashboard.php');
 			exit();
 		} else {

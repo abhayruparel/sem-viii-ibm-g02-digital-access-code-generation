@@ -18,7 +18,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-        <title>DAC|User</title>
+        <title>DAC | MANAGER</title>
         <!-- Bootstrap Core CSS -->
         <link href="../assets/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <!-- Menu CSS -->
@@ -96,6 +96,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     </li> -->
                         <li>
                             <a href="generate_otp.php" class="waves-effect"><b>OTP GENERATION</b></a>
+                        </li>
+                        <li>
+                            <a href="allocate_manager.php" class="waves-effect"><b>AVAILABLE USERS</b></a>
                         </li>
                     </ul>
                 </div>
