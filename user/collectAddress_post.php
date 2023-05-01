@@ -9,7 +9,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     exit;
 }
 
-echo "<script>alert('called');</script>";
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Escape user inputs for security
@@ -28,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         VALUES ('$name', '$phone', '$addrs', '$pincode', '$state', '$country', '$user_id_fk')";
 
     if (mysqli_query($con, $sql)) {
-        echo "Address added successfully";
-        echo "<script>alert('inserted');window.location.href = 'http://localhost/sem8/user/collectAddress.php';</script>";
+        // echo "Address added successfully";
+        echo "<script>alert('Saved sucessfully! Enjoy our services :D');window.location.href = 'http://localhost/sem8/user/collectAddress.php';</script>";
         exit();
 
     } else {
