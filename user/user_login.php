@@ -1,4 +1,15 @@
 <?php
+// include "mail_function.php";
+// declare(strict_types=1); #2fa
+require 'vendor/autoload.php';
+// require'validate.php';
+$secret = 'XVQ2UIGO75XRUKJO';
+$link = \Sonata\GoogleAuthenticator\GoogleQrUrl::generate('DAC', $secret, 'user');
+
+$g = new \Sonata\GoogleAuthenticator\GoogleAuthenticator();
+echo $g->getCode($secret);
+
+
 require('../config.php');
 
 session_start();
@@ -25,10 +36,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		if ($inputPasswordHashed === $hashedPassword) {
 			// Password is correct and user is verified, set session variables
-			$_SESSION["loggedin"] = true;
-			$_SESSION["username"] = $email;
-			$_SESSION["user_id"] = $id;
-			header('location: userDashboard.php');
+			if(isset($_POST['submit']))
+			{
+				$code = $_POST['pass-code'];
+				
+
+				if ($g->checkCode($secret, $code)) {
+					$_SESSION["loggedin"] = true;
+					$_SESSION["username"] = $email;
+					$_SESSION["user_id"] = $id;
+					header("location: userDashboard.php");
+				} else {
+					echo "NO \n";
+				}
+			}
 			exit();
 		} else {
 			$errorMessage = "Invalid email or password.";
@@ -41,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <!DOCTYPE html>
 <html>
 
-	<head>
+	<head> 	
 		<meta charset="utf-8">
 		<title>Login</title>
 		<link href="style.css" rel="stylesheet" type="text/css">
@@ -49,8 +70,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
 			crossorigin="anonymous" referrerpolicy="no-referrer">
 	</head>
-
 	<body>
+		<div style="width: 50%; margin: 10px auto;">
+			<center><h1> Two factor authentication </h1></center>
+			<center><img src="<?=$link;?>"></center><br>
+		</div> 
 		<div class="register">
 			<h1>Login</h1>
 			<form method="post" autocomplete="off">
@@ -61,8 +85,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				<label for="password">
 					<i class="fas fa-lock"></i>
 				</label>
+
+				
 				<input type="password" name="password" placeholder="Password" id="password" required>
-				<input type="submit" value="Login">
+
+				<div class="form_wrap">
+                    <div class="input-group">
+                        <div class = "input-group-addon
+						addon-diff-color">
+							<span class="glyphicon
+							glyphicon-lock"></span>
+                    </div>
+					<input type="text" autocomplete="off" class="form-control" name = "pass-code"placeholder="Enter code">
+                </div>
+				</div> 
+ <!-- Re-captcha -->
+ <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<!-- Re-captcha -->
+<div class="g-recaptcha" data-sitekey="6LdqdzIlAAAAADs3iEIZibUD0e2J285RLYcvLYUi"></div>
+<br>
+				<input type="submit" value="Login" name="submit">
 				<?php if (isset($errorMessage)): ?>
 					<p><?php echo $errorMessage; ?></p> <?php endif; ?>
 			</form>

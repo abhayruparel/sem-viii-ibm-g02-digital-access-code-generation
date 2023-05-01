@@ -1,7 +1,7 @@
 <?php
 require('../config.php');
 include('managerHeader.php');
-include('managerFooter.php');
+
 
 
 if (isset($_GET['user_id'])) {
@@ -15,12 +15,12 @@ if (isset($_GET['user_id'])) {
 
     if ($stmt->affected_rows > 0) {
         $message = "User allocated successfully.";
-        echo "<script>alert('$message'); window.location.href = 'http://localhost/sem8/manager/allocate_manager.php'</script>";
+        echo "<script>alert('$message'); window.location.href = 'http://localhost/dac/manager/allocate_manager.php'</script>";
 
         exit();
     } else {
         $message = "Failed to allocate user.";
-        echo "<script>alert('$message'); window.location.href = 'http://localhost/sem8/manager/allocate_manager.php'</script>";
+        echo "<script>alert('$message'); window.location.href = 'http://localhost/dac/manager/allocate_manager.php'</script>";
 
         exit();
     }
@@ -29,5 +29,6 @@ if (isset($_GET['user_id'])) {
 }
 // If user_id parameter is not set, redirect to allocate_manager.php without the parameter
 header("Location: allocate_manager.php");
+include('managerFooter.php');
 exit();
 ?>

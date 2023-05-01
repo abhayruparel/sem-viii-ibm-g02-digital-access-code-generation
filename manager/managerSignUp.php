@@ -84,19 +84,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sizeOfHash = 64;
             $hashedPassword = hash_pbkdf2("sha512", $userPassword, $saltvalue, $iterations, $sizeOfHash);
             $verified = 0;
-            $stmt = $con->prepare("INSERT INTO manager(first_name, last_name,email, password, saltvalue, verified) VALUES (?,?,?,?,?,?)");
-            $stmt->bind_param("ssssss", $first_name, $last_name, $email, $hashedPassword, $saltvalue, $verified);
+            $stmt = $con->prepare("INSERT INTO manager(first_name, last_name,email, password,saltvalue, verified) VALUES (?,?,?,?,?,?)");
+            $stmt->bind_param("ssssss", $first_name, $last_name, $email, $hashedPassword, $saltvalue,  $verified);
 
             $stmt->execute();
 
             if ($stmt->affected_rows === 1) {
-                echo "<script>alert('New user registered successfully!')</script>";
+                echo "<script>alert('New Manager registered successfully!')</script>";
             } else {
                 echo 'Error: ' . $stmt->error;
             }
         }
     }
 }
+
+
 ?>
 
 <!-- Design by foolishdeveloper.com -->
@@ -109,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Register</title>
+    <title>Manager Register</title>
 
     <style>
         @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,700&display=swap');
@@ -213,7 +215,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="form_container">
             <form name="form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                 <div class="heading">
-                    <h2>Registion Form For User</h2>
+                    <h2>Registion Form For Manager</h2>
                 </div>
                 <div class="form_wrap fullname">
                     <div class="form_item">
@@ -248,7 +250,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="error" id="ConfirmPassword"><?php echo $confirmPassword_err; ?></div>
                     </div>
                 </div>
+<!-- Re-captcha -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
+<!-- Re-captcha -->
+<div class="g-recaptcha" data-sitekey="6LdqdzIlAAAAADs3iEIZibUD0e2J285RLYcvLYUi"></div>
+<br>
                 <div class="btn">
                     <input type="submit" value="REGISTER">
                 </div>

@@ -95,7 +95,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <a href="display_admins.php" class="waves-effect"><b>Display Admin</b></a>
                     </li> -->
                         <li>
-                            <a href="generate_otp.php" class="waves-effect"><b>OTP GENERATION</b></a>
+                            <a href="assetsl/404.HTML" class="waves-effect"><b>OTP GENERATION</b></a>
                         </li>
                         <li>
                             <a href="allocate_manager.php" class="waves-effect"><b>AVAILABLE USERS</b></a>

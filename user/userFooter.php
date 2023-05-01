@@ -1,4 +1,4 @@
-<footer class="footer text-center"></footer>
+
 </div>
 <!-- /#wrapper -->
 <!-- jQuery -->

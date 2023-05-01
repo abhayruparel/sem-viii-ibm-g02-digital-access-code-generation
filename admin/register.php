@@ -265,11 +265,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <input type="password" value="<?php echo (isset($confirmPassword) ? $confirmPassword : ''); ?>" name="confirm_password">
                         <div class="error" id="ConfirmPassword"><?php echo $confirmPassword_err; ?></div>
                     </div>
-                </div>
+                </div>  
+		<!-- Re-captcha -->
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
+<!-- Re-captcha -->
+<div class="g-recaptcha" data-sitekey="6LdqdzIlAAAAADs3iEIZibUD0e2J285RLYcvLYUi"></div>
+<br>
                 <div class="btn">
                     <input type="submit" value="REGISTER">
-                </div>
+                </div>  
                 <div class="form_wrap">
                     <div class="form_item">
                         <p>if you have already registered then click: <a href="login.php">login</a></p>

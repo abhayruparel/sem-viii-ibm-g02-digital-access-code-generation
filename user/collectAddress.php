@@ -29,10 +29,10 @@ include('userHeader.php');
           <label for="state">State:</label>
           <input type="text" id="state" name="state" class="form-control" required><br>
         </div>
-        <div class="form-group col-3">
-          <label for="country">Country:</label>
-          <input type="text" id="country" name="country" class="form-control" required><br>
-        </div>
+          <div class="form-group col-3">
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" class="form-control" required><br>
+          </div>
 
         <input type="submit" value="Submit">
       </form>

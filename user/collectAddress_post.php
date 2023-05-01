@@ -29,12 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (mysqli_query($con, $sql)) {
         // echo "Address added successfully";
-        echo "<script>alert('Saved sucessfully! Enjoy our services :D');window.location.href = 'http://localhost/sem8/user/collectAddress.php';</script>";
+        echo "<script>alert('Saved sucessfully! Enjoy our services :D');window.location.href = 'http://localhost/dac/user/collectAddress.php';</script>";
         exit();
 
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($con);
-        echo "<script>alert('insert failed');window.location.href = 'http://localhost/sem8/user/collectAddress.php';</script>";
+        echo "<script>alert('insert failed');window.location.href = 'http://localhost/dac/user/collectAddress.php';</script>";
 
     }
 }

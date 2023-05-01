@@ -1,7 +1,7 @@
 <?php
 require('../config.php');
 // Define and initialise the variables for form
-// Define and initialise the variables for form
+
 $firstname_err = $last_name_err = $email_err = $userPassword_err = $confirmPassword_err = '';
 $first_name = '';
 $last_name = '';
@@ -79,19 +79,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // echo $data_validation;
         if ($data_validation === 1) {
-            // $saltvalue = bin2hex(openssl_random_pseudo_bytes(16));
+            $saltvalue = bin2hex(openssl_random_pseudo_bytes(16));
 
-            // $iterations = 1000;
-            // $sizeOfHash = 64;
-            // $hashedPassword = hash_pbkdf2("sha512", $userPassword, $saltvalue, $iterations, $sizeOfHash);
+            $iterations = 1000;
+            $sizeOfHash = 64;
+            $hashedPassword = hash_pbkdf2("sha512", $userPassword, $saltvalue, $iterations, $sizeOfHash);
             $verified = 0;
-            $stmt = $con->prepare("INSERT INTO manager(first_name, last_name,email, password, verified) VALUES (?,?,?,?,?)");
-            $stmt->bind_param("ssssi", $first_name, $last_name, $email, $password, $verified);
+            $stmt = $con->prepare("INSERT INTO manager(first_name, last_name, email, password, saltvalue, verified) VALUES (?,?,?,?,?,?)");
+            $stmt->bind_param("sssssi", $first_name, $last_name, $email, $password, $saltvalue, $verified);
 
             $stmt->execute();
 
             if ($stmt->affected_rows === 1) {
-                echo "<script>alert('New user registered successfully!')</script>";
+                echo "<script>alert('New user registered successfully!'); window.location.href = 'http://localhost/dac/admin/index.php';</script>";
             } else {
                 echo 'Error: ' . $stmt->error;
             }

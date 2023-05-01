@@ -58,8 +58,17 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         </ul>
                         <!-- /.dropdown-user -->
                     </li>
+<!-- 
+                    <li class="dropdown">
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="../assets/images/users/hritik.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"><b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></b> </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="register_manager.php"><i class="fa fa-power-off"></i> ADD Manager</a></li>
+                        </ul>
+                     
+                    </li> -->
                     <!-- /.dropdown -->
                 </ul>
+
             </div>
             <!-- /.navbar-header -->
             <!-- /.navbar-top-links -->
@@ -85,7 +94,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <a href="display_admins.php" class="waves-effect"><b>Display Admin</b></a>
                     </li> -->
                     <li>
-                        <a href="showUserStatus.php" class="waves-effect"><b>User Status</b></a>
+                        <a href="assetsl/404.HTML" class="waves-effect"><b>User Status</b></a>
+                    </li>
+                    <li>
+                        <a href="register_manager.php" class="waves-effect"><b>Add Manager</b></a>
                     </li>
                 </ul>
             </div>

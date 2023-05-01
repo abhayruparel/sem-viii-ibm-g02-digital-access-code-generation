@@ -1,4 +1,5 @@
 <?php
+
 require('../config.php');
 // Define and initialise the variables for form
 $firstname_err = $last_name_err = $email_err = $userPassword_err = $confirmPassword_err = '';
@@ -84,8 +85,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $sizeOfHash = 64;
             $hashedPassword = hash_pbkdf2("sha512", $userPassword, $saltvalue, $iterations, $sizeOfHash);
             $verified = 0;
-            $stmt = $con->prepare("INSERT INTO user(first_name, last_name,email, password, saltvalue, verified) VALUES (?,?,?,?,?,?)");
-            $stmt->bind_param("ssssss", $first_name, $last_name, $email, $hashedPassword, $saltvalue, $verified);
+            $stmt = $con->prepare("INSERT INTO user(first_name, last_name,email,password, saltvalue, verified) VALUES (?,?,?,?,?,?)");
+            $stmt->bind_param("ssssss" , $first_name, $last_name, $email, $hashedPassword, $saltvalue, $verified);
 
             $stmt->execute();
 
@@ -248,7 +249,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <div class="error" id="ConfirmPassword"><?php echo $confirmPassword_err; ?></div>
                     </div>
                 </div>
+ <!-- Re-captcha -->
+ <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
+<!-- Re-captcha -->
+<div class="g-recaptcha" data-sitekey="6LdqdzIlAAAAADs3iEIZibUD0e2J285RLYcvLYUi"></div>
+<br>
                 <div class="btn">
                     <input type="submit" value="REGISTER">
                 </div>
@@ -256,12 +262,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <div class="form_item">
                         <p>if you have already registered then click: <a href="user_login.php">login</a></p>
                     </div>
-                </div>
+                </div>          
             </form>
         </div>
 
     </div>
-
+    <script>
+window.onload = function() {
+  var recaptcha = document.forms["wrapper"]["g-recaptcha"];
+  recaptcha.required = true;
+  recaptcha.oninvalid = function(e) {
+    // do something
+    alert("Please complete the captcha");
+  }
+}
+</script>
 </body>
 
 </html>
